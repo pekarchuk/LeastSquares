@@ -24,6 +24,8 @@ void LeastSquare::GetData()
     }
     QStringList xdata_l = xdata.split(delim);
     QStringList ydata_l = ydata.split(delim);
+    x_values.clear();
+    y_values.clear();
     for (auto c = xdata_l.begin(); c!= xdata_l.end(); ++c)
     {
         x_values.push_back((*c).toDouble());
@@ -84,6 +86,7 @@ void LeastSquare::CalculateFit()
     }
     a = (size*sumxy - sumx*sumy) / (size*sumxsq - (sumx * sumx));
     b = (sumy - a*sumx) / size;
+    y_apprx.clear();
     for (auto i = x_values.cbegin(); i != x_values.cend(); ++i)
     {
         y_apprx.push_back(a*(*i) + b);
